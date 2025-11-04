@@ -1,11 +1,148 @@
-<html>
-    <head></head>
-    <body>
-        <form name="feedback" data-netlify="true" hidden>
-            <input type="hidden" name="form-name" value="feedback" />
-            <input name="name" type="text" />
-            <input name="email" type="text" />
-            <input name="message" type="text" />
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Maker 🎨</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", Arial, sans-serif;
+        background: linear-gradient(135deg, #121212, #1f1f1f);
+        color: #fff;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(90deg, #00f5a0, #00d9f5);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      p.subtitle {
+        color: #aaa;
+        font-size: 1.1rem;
+        margin-top: 8px;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 30px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 450px;
+        text-align: center;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .upload-box {
+        border: 2px dashed #00d9f5;
+        border-radius: 12px;
+        padding: 30px;
+        margin-top: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .upload-box:hover {
+        background: rgba(0, 217, 245, 0.1);
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      label {
+        font-size: 1rem;
+        color: #00d9f5;
+        cursor: pointer;
+      }
+
+      button {
+        background: linear-gradient(90deg, #00f5a0, #00d9f5);
+        color: #000;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: bold;
+        margin-top: 25px;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(0, 217, 245, 0.3);
+      }
+
+      video {
+        width: 100%;
+        border-radius: 12px;
+        margin-top: 20px;
+        display: none;
+      }
+
+      footer {
+        margin-top: 40px;
+        color: #666;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Canvas Maker 🎬</h1>
+      <p class="subtitle">Erstelle deinen Spotify Canvas in Sekunden</p>
+    </header>
+
+    <div class="card">
+      <form id="uploadForm">
+        <div class="upload-box">
+          <label for="cover">📁 Albumcover hochladen</label>
+          <input type="file" id="cover" accept="image/*" required />
+        </div>
+        <button type="submit">🎨 Canvas generieren</button>
+      </form>
+
+      <video id="preview" controls loop></video>
+    </div>
+
+    <footer>© 2025 Canvas Maker — made with ❤️ in Germany</footer>
+
+    <script>
+      const form = document.getElementById("uploadForm");
+      const video = document.getElementById("preview");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const file = document.getElementById("cover").files[0];
+        if (!file) return alert("Bitte ein Albumcover auswählen!");
+
+        // Platzhalter: Hier würde dein Backend-Aufruf stehen (z. B. /api/generate-video)
+        alert("🎬 Das Bild wurde hochgeladen (Demo-Modus)");
+
+        // Beispiel-Demo: zufälliges Video anzeigen
+        video.src =
+          "https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4";
+        video.style.display = "block";
+      });
+    </script>
+  </body>
 </html>
